@@ -14,8 +14,6 @@ app.use(express.json());
 app.use(cors())
 
 // routes
-app.use('/api/players', require('./routes/player'));
-app.use('/api/teams', require('./routes/team'));
 
 // listen to port
 app.listen(5000, () => {
