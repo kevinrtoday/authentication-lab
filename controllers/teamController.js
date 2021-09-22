@@ -1,18 +1,17 @@
-const SoccerPlayer = require("../models/SoccerPlayer");
+const SoccerTeam = require("../models/SoccerTeam");
 
-const getAllPlayers = async (req, res) => {
-  const meetings = await SoccerPlayer.find();
+const getAllTeams = async (req, res) => {
+  const meetings = await SoccerTeam.find();
   try {
     return res.status(200).json(meetings);
   } catch (error) {
-    console.log(error)
     return res.status(500).json({ message: "Server Error" });
   }
 };
 
-const getPlayerById = async (req, res) => {
+const getTeamById = async (req, res) => {
   const { id } = req.params;
-  const meeting = await SoccerPlayer.findById(id);
+  const meeting = await SoccerTeam.findById(id);
   try {
     return res.status(200).json(meeting);
   } catch (error) {
@@ -20,8 +19,8 @@ const getPlayerById = async (req, res) => {
   }
 };
 
-const createPlayer = async (req, res) => {
-  const meeting = await SoccerPlayer.create(req.body);
+const createTeam = async (req, res) => {
+  const meeting = await SoccerTeam.create(req.body);
   try {
     return res.status(201).json(meeting);
   } catch (error) {
@@ -29,9 +28,9 @@ const createPlayer = async (req, res) => {
   }
 };
 
-const updatePlayer = async (req, res) => {
+const updateTeam = async (req, res) => {
   const { id } = req.params;
-  const meeting = await SoccerPlayer.findByIdAndUpdate(id, req.body, {
+  const meeting = await SoccerTeam.findByIdAndUpdate(id, req.body, {
     new: true,
   });
   try {
@@ -41,9 +40,9 @@ const updatePlayer = async (req, res) => {
   }
 };
 
-const deletePlayer = async (req, res) => {
+const deleteTeam = async (req, res) => {
   const { id } = req.params;
-  await SoccerPlayer.findByIdAndDelete(id);
+  await SoccerTeam.findByIdAndDelete(id);
   try {
     return res
       .status(203)
@@ -54,9 +53,9 @@ const deletePlayer = async (req, res) => {
 };
 
 module.exports = {
-  getAllPlayers,
-  getPlayerById,
-  createPlayer,
-  updatePlayer,
-  deletePlayer,
+  getAllTeams,
+  getTeamById,
+  createTeam,
+  updateTeam,
+  deleteTeam,
 };
