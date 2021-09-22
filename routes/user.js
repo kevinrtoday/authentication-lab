@@ -7,9 +7,9 @@ const { generateJwt } = require("../middlewares/generateJwt");
 
 // Signup
 router.post("/signup", async (req, res) => {
+  console.log("sign up controller");
   const testEmail = await User.findOne({ email: req.body.email });
   if (testEmail) {
-    console.log(error);
     return res.status(500).json({ message: "Email already exists" });
   }
   const userToCreate = await new User(req.body);
@@ -21,6 +21,7 @@ router.post("/signup", async (req, res) => {
     return res.status(201).json(userToCreate);
   } catch (error) {
     // 500 - Server error
+    console.log(error);
     return res.status(500).json({ message: "Couldn't create user" });
   }
 });

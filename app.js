@@ -18,7 +18,7 @@ app.use(cors());
 // routes
 app.use("/api/players", require("./routes/player"));
 app.use("/api/teams", require("./routes/team"));
-app.use("api/users", require("./routes/user"));
+app.use("/api/users", require("./routes/user"));
 
 // listen to port
 app.listen(5000, () => {
